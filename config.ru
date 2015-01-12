@@ -1,2 +1,2 @@
 require './main'
-run Secretary
+run Whimsy
