@@ -15,11 +15,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
     <!-- Actual layout -->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">ASF Whimsy (find a logo to put here)</a>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="<%= url('secretary/upload') %>">Upload a File</a></li>
+        </ul>
       </div>
     </nav>
 
@@ -27,7 +30,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li>blah</li>
+            <%= erb :nav_header %>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
