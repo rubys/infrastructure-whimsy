@@ -4,7 +4,8 @@ gem 'sinatra'
 
 group :development do
   gem 'puma'
-  gem "rspec", :require => false
-  gem "yard"
-  gem "fakefs"
+  gem 'rspec', :require => false
+  gem 'yard'
+  gem 'fakefs'
+  gem 'faker'
 end

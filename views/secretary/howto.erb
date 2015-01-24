@@ -1,0 +1,98 @@
+<h1 class="page-header"> How To Use This Tool </h1>
+
+<p>This tool helps file documents received via fax or email.</p>
+<ol>
+	<li>
+<p style="margin-bottom: 0in"><font face="Times New Roman, serif"><font size="3">Documents
+	to be filed appear in the Work List area. </font></font>
+	</p>
+	<ol type="A">
+		<li>
+<p >Documents that are received via fax appear as .pdf files with an eFax prefix. These documents can be processed directly. There is no metadata associated with these documents, so all information must be entered manually.</p>
+		</li>
+<li>
+<p >Documents that are received via email are in one of two forms. Metadata associated with the documents includes the sender's email address and name. This metadata will populate certain forms for specific document types.</p>
+		<ol type="i">
+			<li>
+        <p >If an email is received with a single document to be processed that document will appear by itself. 
+        </p>
+			</li>
+<li>
+<p >If an email is received with multiple documents, all of the documents will be put into a single directory and the directory appears in the work list.</p>
+		</li>
+</ol>
+	</li>
+</ol>
+	</li>
+<li>
+<p >To convert documents to a form that can be processed, select the directory from the Work List. The contents of the directory will be displayed on the view port.  </p>
+	<ol type="A">
+		<li>
+<p >If the documents are a file and a signature (e.g. icla.txt and icla.txt.asc) the tool will attempt to verify the document via the command "gpg --verify icla.txt.asc". The results of the verification are displayed in the view port along with the list of documents. If the document verifies correctly, it can be processed as if it were a document. 
+		</p>
+		<ol type="i">
+			<li>
+<p >If the document does not verify because the public key is not available, try to download the key from a public key server via the command "gpg --recv-keys &lt;pub-key&gt;". After the key is downloaded, you can try again.</p>
+			</li>
+<li>
+<p >If the document does not verify because the signature is BAD, contact the sender and attempt to get the document in a different mode.</p> </li>
+</ol>
+		</li>
+<li>
+<p >If the documents are a collection of documents, they can be turned into individual documents via the Staple command in the view port.  </p>
+		<ol type="i">
+			<li>
+<p >If the documents comprise a single document, e.g. icla1.pdf, icla2.pdf, select both documents and press the Staple key. Both documents will be combined into a single .pdf document and displayed in the Work List. This technique currently works for .pdf and .jpg files.</p>
+			</li>
+<li>
+<p >If the documents comprise multiple independent documents, select a single document and press Staple. The single document will be copied into a new document with the same metadata and placed into the Work List. This technique currently works for .pdf and .jpg files.</p>
+			</li>
+<li>
+<p >For each document in the collection, after stapling the document is ready for processing.</p> </li>
+<li>
+<p >After all documents have been processed, check to make sure the directory has been deleted by using the "svn status" command. [The directory will not appear in the Work List if it is empty.] If not, remove it manually using the "svn rm" command.</p>
+		</li>
+</ol>
+	</li>
+</ol>
+	</li>
+<li>
+<p >To process a document, select it from the Work List. If it is displayable, the document will appear in the view port. All documents must be complete and legible. Multipage documents must have all pages included (specifically, not just the first and last page) in the same transmission. 
+	</p>
+	<ol type="A">
+		<li>
+<p >ICLAs: Required fields are full name, email address, signature, and date.  If there is already an existing ICLA for the same name, you must establish whether the existing document is for the same person. 
+		</p>
+		<ol type="i">
+			<li>
+<p >If the existing document is for the same person, process the new ICLA with a different file name (e.g. existing-name2.pdf) and before completing the process, create a directory (e.g. existing-name/) and move both existing-name.pdf and existing-name2.pdf into the new directory.</p>
+			</li>
+<li>
+<p >If the existing document is for a different person, contact the submitter and see if there is an additional (middle) name that can be used in the "Full Name" section. If not, see if there is a title that can be used to distinguish the entries.</p> </li>
+<li>
+<p >Try to determine if the ICLA is from a person who should be given commit access. Read the original email containing the document, look at the "notify PMC" field on the form, and search the email records to determine if the ICLA is in response to an invitation from a PMC or PPMC. If there is a valid invitation from a PMC, select the url of the invitation so it can be pasted into the ICLA form below the "file" button.</p>
+		</li>
+</ol>
+		</li>
+<li>
+<p >If the acknowledgement email to the ICLA submitter bounces, try to resolve the issue. Common reasons for bounced emails are typos due to illegible ICLAs or ambiguous special symbols, such as "-" for "_", "0" for "o". Note that email addresses are case-insensitive. If the proper email address cannot be obtained, manually edit the foundation/officers/iclas.txt file and change the incorrect email address. The address can be changed, for example, from "<a href="mailto:wrong.email@company.com">wrong.email@company.com</a>" to "Bounced Email&lt; <a href="mailto:wrong.email@company.com">wrong.email@company.com</a>&gt;".</p>
+		</li>
+<li>
+<p >CCLAs must be signed by an officer of the corporation authorized to enter into binding contracts. Required fields are corporation name, contact, and email address. 
+		</p>
+		</li>
+<li>
+<p >NDAs require the apache id.</p>
+	</li>
+</ol>
+	</li>
+<li>
+<p >If there are duplicate documents to be processed, after processing the best document, remove the duplicates before committing. Choose "other" "junk" from the menu. After removing all duplicates, commit the batch.</p>
+	</li>
+<li>
+<p >After processing an ICLA, if the sender should have an account created, select "New Account" from the menu. The last ICLA should appear in the "ASF New Account Request" form. In "Comments" indicate "original committer" if the ICLA is from a new podling. Otherwise, leave it blank.</p>
+	</li>
+<li>
+<p >Forms received by other than the above process should be added to the documents/received directory and added via "svn add". The document will then appear in the work list to be processed as above.  Documents that are not in the proper format should be converted to .pdf before adding them.</p>
+</li>
+</ol>

@@ -3,6 +3,9 @@ GEM
   specs:
     diff-lcs (1.2.5)
     fakefs (0.6.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
+    i18n (0.6.11)
     puma (2.10.2)
       rack (>= 1.1, < 2.0)
     rack (1.6.0)
@@ -32,6 +35,7 @@ PLATFORMS
 
 DEPENDENCIES
   fakefs
+  faker
   puma
   rspec
   sinatra
