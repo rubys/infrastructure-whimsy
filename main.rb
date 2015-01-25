@@ -1,15 +1,18 @@
 require 'sinatra'
 require 'yaml'
 
-
-class Whimsy < Sinatra::Base
+class WhimsyApp < Sinatra::Base
 
   def self.load_config(file)
     if File.exist? file
-      Psych.load(File.read(file))
+      @@config = OpenStruct.new(Psych.load(File.read(file)))
     else
       raise Exeception.new("Unable to read #{file}")
     end
+  end
+
+  def self.config
+    @@config
   end
 
   configure do
@@ -20,5 +23,4 @@ class Whimsy < Sinatra::Base
 
   # start the server if ruby file executed directly
   run! if app_file == $0
-
 end
