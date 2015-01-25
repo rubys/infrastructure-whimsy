@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
+gem 'mail'
 
 group :development do
   gem 'puma'

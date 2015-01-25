@@ -1,10 +1,9 @@
-#meeting:    /var/tools/secretary/foundation/Meetings/20140527
-:foundation: /var/tools/secretary/foundation
-:officers:   /var/tools/secretary/foundation/officers
-:documents:  /var/tools/secretary/documents
-:received:   /var/tools/secretary/documents/received
-:mail:       /var/tools/secretary/secmail.rb
-:subreq:     /var/tools/secretary/subreq
+:svn_paths:
+  :foundation: /var/tools/secretary/foundation
+  :officers:   /var/tools/secretary/foundation/officers
+  :documents:  /var/tools/secretary/documents
+  :received:   /var/tools/secretary/documents/received
+  :subreq:     /var/tools/secretary/subreq
 :old_podlings:
   - 'allura'
   - 'ambari'
