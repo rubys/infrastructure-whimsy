@@ -13,5 +13,6 @@ class WhimsyApp < Sinatra::Base
   end
 
   post '/secretary/upload' do
+    file = params['file']
   end
 end
