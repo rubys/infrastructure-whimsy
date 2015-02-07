@@ -1,9 +1,12 @@
+# Hardcoded svn paths
 :svn_paths:
   :foundation: /var/tools/secretary/foundation
   :officers:   /var/tools/secretary/foundation/officers
   :documents:  /var/tools/secretary/documents
   :received:   /var/tools/secretary/documents/received
   :subreq:     /var/tools/secretary/subreq
+
+# Not sure if these are necessary
 :old_podlings:
   - 'allura'
   - 'ambari'
@@ -26,4 +29,11 @@
   - 'tashi'
   - 'vxquery'
   - 'wave'
-    
+
+# Update these users when they change
+:secretary:
+  - clr
+  - rubys
+  - jcarman
+  - sanders
+  - mnour
