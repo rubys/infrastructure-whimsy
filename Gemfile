@@ -1,10 +1,15 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
+gem 'faye'
+gem 'hiredis'
 gem 'mail'
+gem 'multi_json'
+gem 'oj'
+gem 'puma'
+gem 'redis'
 
 group :development do
-  gem 'puma'
   gem 'rspec', :require => false
   gem 'yard'
   gem 'fakefs'

@@ -1,9 +1,13 @@
+require 'faye'
+require 'multi_json'
+require 'oj'
 require 'sinatra'
 require 'yaml'
 
 class WhimsyApp < Sinatra::Base
 
-  def self.load_config(file)
+  def self.load_config
+    file = 'config.yaml'
     if File.exist? file
       @@config = OpenStruct.new(Psych.load(File.read(file)))
     else
@@ -15,7 +19,13 @@ class WhimsyApp < Sinatra::Base
     @@config
   end
 
+  # Enable websocket requests to be read/sent through the /faye path
+  # This only uses an in-memory store which should be fine for Secretary
+  # If not, switch to using Redis
+  use Faye::RackAdapter, mount: '/faye', timeout: 25
+
   configure do
+    load_config
   end
 
   # Load all of the routes
