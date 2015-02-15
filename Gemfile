@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'faye'
+gem 'faye-websocket'
 gem 'hiredis'
 gem 'mail'
 gem 'multi_json'
