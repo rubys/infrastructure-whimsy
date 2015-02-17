@@ -10,12 +10,13 @@ class WhimsyApp < Sinatra::Base
     file = 'config/config.yaml'
     dev_redis = 'config/redis.development'
     if File.exist? file
-      @@config = OpenStruct.new(Psych.load(File.read(file)))
+      config = Psych.load(File.read(file))
       
       if WhimsyApp.development?
-        redis_config = Psych.load(File.read(dev_redis))
-        @@config[:redis] = redis_config
+        config[:redis] = Psych.load(File.read(dev_redis))
       end
+
+      @@config = OpenStruct.new(config)
     else
       raise Exeception.new("Unable to read #{file}")
     end
